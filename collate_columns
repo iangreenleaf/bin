@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+# Given the following input:
+#   foo,bar,bazz
+#   1,200,33
+#   ,,X
+# Will produce:
+#   foo 1
+#   bar 200
+#   baz 33 X
+
+data = []
+ARGF.each do |line|
+  data << line.chomp.split(",")
+end
+
+remain = 1
+until remain.zero? do
+  output = []
+  remain = data.inject(0) do |sum,row|
+    unless (x = row.shift).nil?
+      output << x
+      sum += 1
+    end
+    sum
+  end
+  puts output.join " "
+end
+
+
+__END__

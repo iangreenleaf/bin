@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$#" -lt 3 ]; then echo "
+  USAGE:
+  $(basename "$0") original/project_name ticket_num branch
+  "
+  exit
+fi
+
+project=$1
+ticket=$2
+branch=$3
+
+curl -d "pull[head]=$GITHUB_USER:$branch" -d "pull[base]=master" -d "pull[issue]=$ticket" "https://github.com/api/v2/json/pulls/$project" -d "login=$GITHUB_USER" -d "token=$GITHUB_TOKEN"
