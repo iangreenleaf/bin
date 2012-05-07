@@ -10,5 +10,6 @@ fi
 project=$1
 ticket=$2
 branch=$3
+if [[ "$branch" != *:* ]]; then branch="$GITHUB_USER:$branch"; fi
 
-curl -d "pull[head]=$GITHUB_USER:$branch" -d "pull[base]=master" -d "pull[issue]=$ticket" "https://github.com/api/v2/json/pulls/$project" -d "login=$GITHUB_USER" -d "token=$GITHUB_TOKEN"
+curl -d "pull[head]=$branch" -d "pull[base]=master" -d "pull[issue]=$ticket" "https://github.com/api/v2/json/pulls/$project" -d "login=$GITHUB_USER" -d "token=$GITHUB_TOKEN"
