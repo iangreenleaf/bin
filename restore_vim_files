@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for f in $(find . -iname '.*.s[uvw][a-z]'); do
+  vim -r "$f" -c ':wq' && \
+    trash-put "$f"
+done
