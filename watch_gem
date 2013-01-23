@@ -1,0 +1,8 @@
+#!/bin/bash
+
+API_KEY=$(cat ~/.rubygems-api)
+
+gem=$1
+
+curl -H "Authorization:$API_KEY" -F "gem_name=$gem" -F "url=https://zapier.com/hooks/catch/n/OQEu/" "https://rubygems.org/api/v1/web_hooks"
+echo

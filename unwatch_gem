@@ -1,0 +1,8 @@
+#!/bin/bash
+
+API_KEY=$(cat ~/.rubygems-api)
+
+gem=$1
+
+curl -X DELETE -H "Authorization:$API_KEY" -d "gem_name=$gem" -d "url=https://zapier.com/hooks/catch/n/OQEu/" "https://rubygems.org/api/v1/web_hooks/remove"
+echo
