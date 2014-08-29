@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for f in *.NEF; do
+  exiv2 -e X "$f"
+  exiv2 -e p4 "$f"
+  new_jpg="$(basename "$f" ".NEF").jpg"
+  mv -i *-preview4.jpg "$new_jpg"
+  exiv2 -i X "$new_jpg"
+done
+trash *.xmp
