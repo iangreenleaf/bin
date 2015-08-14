@@ -1,0 +1,5 @@
+#!/bin/bash
+
+vncserver :6 -localhost -nolisten tcp -SecurityTypes None
+DISPLAY=":6" $@
+vncserver -kill :6
