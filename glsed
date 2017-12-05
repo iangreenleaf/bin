@@ -6,4 +6,4 @@ fi
 
 match="$1"
 replace="$2"
-ack -f | xargs grep -l "$match" | xargs sed -i'' -e "s/$match/$replace/g"
+ack -f --print0 | xargs -0 grep -Z -l "$match" | xargs -0 sed -i'' -e "s/$match/$replace/g"
